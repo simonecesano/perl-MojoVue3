@@ -1,0 +1,16 @@
+const template = `<%= $template %>`;
+
+const component = (() => {
+<%= $script %>
+return { ...component, template };
+})();
+
+export default component;
+
+// Inject styles
+if (!document.querySelector('style[data-component="<%= $name %>"]')) {
+    const style = document.createElement('style');
+    style.setAttribute('data-component', '<%= $name %>');
+    style.textContent = `<%= $style %>`;
+    document.head.appendChild(style);
+}
